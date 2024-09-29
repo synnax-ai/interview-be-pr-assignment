@@ -1,0 +1,18 @@
+# lockfile
+pnpm-lock.yaml
+
+# dependencies
+node_modules
+
+# built files
+dist
+
+# coverage
+coverage
+
+# cdk
+.cdk.staging
+cdk.out
+
+# generated type validators
+**/validators/types/generated

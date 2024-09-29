@@ -1,0 +1,22 @@
+{
+  "name": "@synnax-ai/interview-be-pr-assignment-functions",
+  "version": "0.0.0",
+  "repository": "https://github.com/synnax-ai/interview-be-pr-assignment",
+  "type": "module",
+  "scripts": {
+    "build": "pnpm generate-validators && tsc -noEmit",
+    "generate-validators": "typia generate --input src/validators/types/templates --output src/validators/types/generated"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.656.0",
+    "@aws-sdk/lib-dynamodb": "^3.656.0",
+    "luxon": "^3.5.0",
+    "typia": "^6.10.2"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.145",
+    "@types/luxon": "^3.4.2",
+    "aws-sdk-client-mock": "^4.0.2",
+    "vitest": "^2.1.1"
+  }
+}

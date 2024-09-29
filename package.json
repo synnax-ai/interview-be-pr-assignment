@@ -1,0 +1,28 @@
+{
+  "name": "@synnax-ai/interview-be-pr-assignment",
+  "version": "0.0.0",
+  "repository": "https://github.com/synnax-ai/interview-be-pr-assignment",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "vitest",
+    "cdk-deploy": "pnpm build && cd packages/cdk-deployment && pnpm run cdk deploy --all --concurrency 10",
+    "format": "prettier --write .",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^22.6.1",
+    "@vitest/coverage-v8": "^2.1.1",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.1"
+  },
+  "lint-staged": {
+    "*.{ts,js,tsx,cjs,md,yaml,json}": "prettier --write"
+  }
+}
