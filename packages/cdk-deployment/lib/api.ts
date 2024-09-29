@@ -12,5 +12,31 @@ export interface ApiStackProps extends StackProps {
 export class ApiStack extends Stack {
   constructor(scope: Construct, id: string, props: ApiStackProps) {
     super(scope, id, props);
+
+    const enterGiveawayFunction = new NodejsFunction(
+      scope,
+      "EnterGiveawayFunction",
+      {
+        entry: path.join(
+          import.meta.dirname,
+          "../../functions/src/handlers/api.ts",
+        ),
+        runtime: Runtime.NODEJS_20_X,
+        environment: {
+          PARTICIPANTS_TABLE_NAME:
+            props.storageStack.participantsTable.tableName,
+        },
+        handler: "enterGiveaway",
+      },
+    );
+
+    const enterGiveawayFunctionUrl = enterGiveawayFunction.addFunctionUrl({
+      authType: FunctionUrlAuthType.NONE,
+    });
+
+    new CfnOutput(this, "EnterGiveawayFunctionUrl", {
+      value: enterGiveawayFunctionUrl.url,
+      exportName: "EnterGiveawayFunctionUrl",
+    });
   }
 }

@@ -7,5 +7,10 @@ export class StorageStack extends Stack {
 
   constructor(scope: Construct, id: string, props: StackProps) {
     super(scope, id, props);
+
+    this.participantsTable = new TableV2(this, "ParticipantsTable", {
+      tableName: "participants",
+      partitionKey: { name: "name", type: AttributeType.STRING },
+    });
   }
 }
